@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>View Analysis - CommentWise</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styleabout.css') }}">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="static/cwlogo.png" alt="Logo" />
+      <span class="logo-text"></span>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('home') }}">Comment Analysis</a></li>
+      <li><a href="#">View Analysis</a></li>
+      <li><a href="{{ url_for('home') }}">About</a></li>
+      <li class="theme-toggle">
+        <label class="switch">
+          <input type="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
+        </label>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="analysis-container">
+    <h1 class="channel-heading" id="channelName">View Analysis for Channel: <span id="channelTitle">Loading...</span></h1>
+
+    <!-- Categories Accordion -->
+    <div class="category-section">
+      <div class="category-header" onclick="toggleCategory('positive')">
+        Positive Comments <i class="fas fa-chevron-down toggle-icon" id="icon-positive"></i>
+      </div>
+      <div class="category-content" id="positive">Loading data...</div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header" onclick="toggleCategory('neutral')">
+        Neutral Comments <i class="fas fa-chevron-down toggle-icon" id="icon-neutral"></i>
+      </div>
+      <div class="category-content" id="neutral">Loading data...</div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header" onclick="toggleCategory('question')">
+        Questions <i class="fas fa-chevron-down toggle-icon" id="icon-question"></i>
+      </div>
+      <div class="category-content" id="question">Loading data...</div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-header" onclick="toggleCategory('negative')">
+        Negative Comments <i class="fas fa-chevron-down toggle-icon" id="icon-negative"></i>
+      </div>
+      <div class="category-content" id="negative">Loading data...</div>
+    </div>
+
+    <!-- Chart Section -->
+    <section class="chart-section">
+      <h2 class="section-heading red-heading"><b><em>Comment Distribution</em></b></h2>
+      <canvas id="distributionChart" width="400" height="200"></canvas>
+      <p class="chart-caption">Percentage of comments in each category</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <a href="#top" class="back-to-top">Back to top</a>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Get to Know Us</h3>
+          <hr />
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Vision and Idea</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Connect with Us</h3>
+          <hr />
+          <ul>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Be our Partner</h3>
+          <hr />
+          <ul>
+            <li><a href="#">Developer</a></li>
+            <li><a href="#">Trainer</a></li>
+            <li><a href="#">Collaborator</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+  <script src="{{ url_for('static', filename='scriptabout.js') }}" defer></script>
+</body>
+</html>
